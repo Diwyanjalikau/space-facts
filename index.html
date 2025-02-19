@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Fact Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #fact-box {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        #new-fact-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Fact of the Day</h1>
+        <div id="fact-box">Click the button below to see a fun fact!</div>
+        <button id="new-fact-button">New Fact</button>
+    </div>
+    <script>
+        const funFacts = [
+            {
+                fact: "The Earth's rotation speed is about 1,000 miles per hour.",
+                explanation: "This means you're traveling that fast even when you're standing still!"
+            },
+            {
+                fact: "The Earth is about 4.54 billion years old.",
+                explanation: "That's a lot of birthdays!"
+            },
+            {
+                fact: "The Earth's magnetic field protects us from harmful solar radiation.",
+                explanation: "Without it, we wouldn't be here!"
+            },
+            {
+                fact: "The Earth has a single moon.",
+                explanation: "Unlike Mars, which has two!"
+            },
+            {
+                fact: "The Earth orbits the sun in about 365 days.",
+                explanation: "That's why we have a year that's about 365 days long."
+            },
+            // Add more fun facts here...
+        ];
+
+        const factBox = document.getElementById("fact-box");
+        const newFactButton = document.getElementById("new-fact-button");
+
+        function getRandomFact() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            return funFacts[randomIndex];
+        }
+
+        function displayFact() {
+            const fact = getRandomFact();
+            factBox.innerHTML = `
+                <p>${fact.fact}</p>
+                <p class="explanation">${fact.explanation}</p>
+            `;
+        }
+
+        newFactButton.addEventListener("click", displayFact);
+
+        // Display an initial fact on page load
+        displayFact();
+    </script>
+</body>
+</html>
